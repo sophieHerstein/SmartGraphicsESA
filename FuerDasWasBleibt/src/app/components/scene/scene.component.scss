@@ -1,0 +1,95 @@
+app-scene {
+  .story-scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+
+  .story-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+  }
+
+  .story-image.visible {
+    opacity: 1;
+  }
+
+  .text-card {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 2rem;
+    max-width: 700px;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    z-index: 2;
+  }
+
+  .text-card.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .next-scene-button,
+  .prev-scene-button {
+    position: absolute;
+    bottom: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.3s ease;
+    z-index: 3;
+  }
+
+  .next-scene-button {
+    right: 2rem;
+  }
+
+  .prev-scene-button {
+    left: 2rem;
+  }
+
+  .next-scene-button:hover,
+  .prev-scene-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: between;
+  }
+
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    z-index: 999;
+    backdrop-filter: blur(6px);
+  }
+
+}
