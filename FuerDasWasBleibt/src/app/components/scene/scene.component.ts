@@ -1,5 +1,5 @@
-// story-scene.component.ts
 import { Component, Input, OnInit, ElementRef, ViewChild, HostListener, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-scene',
@@ -18,6 +18,17 @@ export class SceneComponent implements OnInit {
   @ViewChild('scene', { static: true }) sceneRef!: ElementRef;
   imageInView = false;
   textInView = false;
+
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  formatText(text: string): SafeHtml {
+    const html = text
+      .split('\n\n')
+      .map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`)
+      .join('');
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
 
   ngOnInit() {
     const observer = new IntersectionObserver(
