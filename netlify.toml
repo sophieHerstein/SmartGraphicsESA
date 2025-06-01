@@ -1,4 +1,12 @@
+[build]
+command = "ng build --configuration production"
+publish = "dist/fuer-das-was-bleibt"
+
 [[redirects]]
 from = "/*"
 to = "/index.html"
 status = 200
+
+# Diese Zeile deaktiviert das Angular Plugin
+[plugins."@netlify/angular-runtime"]
+enabled = false
