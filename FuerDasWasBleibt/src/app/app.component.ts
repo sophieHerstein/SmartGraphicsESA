@@ -21,7 +21,7 @@ export class AppComponent {
     {id: 6, imageSrc: "assets/images/Szene6Final.png", heading: "Nie allein", text: story.scene6},
     {id: 7, imageSrc: "assets/images/Szene7Final.png", heading: "Der Preis des Friedens", text: story.scene7},
     {id: 8, imageSrc: "assets/images/Szene8Final.png", heading: "Ein letzter Atemzug", text: story.scene8},
-    {id: 9, imageSrc: "assets/images/Szene9Final.png", heading: "Nach dem Sturm", text: story.scene9},
+    {id: 9, imageSrc: "assets/images/Szene9Final.png", heading: "Was bleibt?", text: story.scene9},
     {id: 10, imageSrc: "assets/images/EpilogFinal.png", heading: "Epilog", text: story.scene10},
   ]
 
