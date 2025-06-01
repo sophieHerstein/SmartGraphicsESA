@@ -8,40 +8,47 @@ import story from "../assets/story/story.json"
     standalone: false
 })
 export class AppComponent {
+
   scrollProgress = 0;
-  protected readonly story = story;
+  onlyImages = false;
 
   scenes = [
-    {id: "scene1", imageSrc: "assets/images/Szene1Final.png", heading: "Scene 1", text: story.scene1},
-    {id: "scene2", imageSrc: "assets/images/Szene2Final.png", heading: "Scene 2", text: story.scene2},
-    {id: "scene3", imageSrc: "assets/images/Szene3Final.png", heading: "Scene 3", text: story.scene3},
-    {id: "scene4", imageSrc: "assets/images/Szene4Final.png", heading: "Scene 4", text: story.scene4},
-    {id: "scene5", imageSrc: "assets/images/Szene5Final.png", heading: "Scene 5", text: story.scene5},
-    {id: "scene6", imageSrc: "assets/images/Szene6Final.png", heading: "Scene 6", text: story.scene6},
-    {id: "scene7", imageSrc: "assets/images/Szene7Final.png", heading: "Scene 7", text: story.scene7},
-    {id: "scene8", imageSrc: "assets/images/Szene8Final.png", heading: "Scene 8", text: story.scene8},
-    {id: "scene9", imageSrc: "assets/images/Szene9Final.png", heading: "Scene 9", text: story.scene9},
-    {id: "scene10", imageSrc: "assets/images/EpilogFinal.png", heading: "Scene 10", text: story.scene10},
+    {id: 1, imageSrc: "assets/images/Szene1Final.png", heading: "Asche über dem Tal", text: story.scene1},
+    {id: 2, imageSrc: "assets/images/Szene2Final.png", heading: "Was getan werden muss", text: story.scene2},
+    {id: 3, imageSrc: "assets/images/Szene3Final.png", heading: "Für das Ende des Krieges", text: story.scene3},
+    {id: 4, imageSrc: "assets/images/Szene4Final.png", heading: "Letzte Befehle", text: story.scene4},
+    {id: 5, imageSrc: "assets/images/Szene5Final.png", heading: "Vor dem Sturm", text: story.scene5},
+    {id: 6, imageSrc: "assets/images/Szene6Final.png", heading: "Nie allein", text: story.scene6},
+    {id: 7, imageSrc: "assets/images/Szene7Final.png", heading: "Der Preis des Friedens", text: story.scene7},
+    {id: 8, imageSrc: "assets/images/Szene8Final.png", heading: "Ein letzter Atemzug", text: story.scene8},
+    {id: 9, imageSrc: "assets/images/Szene9Final.png", heading: "Nach dem Sturm", text: story.scene9},
+    {id: 10, imageSrc: "assets/images/EpilogFinal.png", heading: "Epilog", text: story.scene10},
   ]
+
+  currentSceneTitle = this.scenes[0].heading;
+
   getNextSceneId(index: number){
     if(index < this.scenes.length){
-      return "scene"+(index+2);
+      return index+2;
     }
-    return "";
+    return undefined;
   }
 
   getPrevSceneId(index: number){
     if(index > 0){
-      return "scene"+index;
+      return index;
     }
-    return "";
+    return undefined;
   }
 
-  @HostListener('window:scroll', [])
-  onScroll() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    this.scrollProgress = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+  triggerOnlyImages(){
+    this.onlyImages = !this.onlyImages;
+  }
+
+  setSceneTitleAndScrollProgress(sceneId: number){
+    this.currentSceneTitle = this.scenes.find((s)=> s.id === sceneId)?.heading ?? "";
+    console.log(this.scrollProgress);
+    this.scrollProgress = sceneId/10 * 100;
   }
 
 }

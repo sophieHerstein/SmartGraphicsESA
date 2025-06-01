@@ -1,12 +1,25 @@
+<header class="mini-header">
+  <button class="toggle-button" (click)="triggerOnlyImages()">
+    {{ onlyImages ? 'Texte einblenden' : 'Texte ausblenden' }}
+  </button>
+  <div class="scene-title">{{ currentSceneTitle }}</div>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar" [style.width.vw]="scrollProgress"></div>
+  </div>
+</header>
 <main class="scroll-container">
   @for (scene of scenes; track scene.id; let index = $index){
     <app-scene
       [id]="scene.id"
+      [sceneId]="scene.id"
       [nextSceneId]="getNextSceneId(index)"
       [prevSceneId]="getPrevSceneId(index)"
       [imageSrc]="scene.imageSrc"
       [heading]="scene.heading"
-      [text]="scene.text">
+      [text]="scene.text"
+      [onlyImages]="onlyImages"
+      (setCurrentScene)="setSceneTitleAndScrollProgress($event)"
+      >
     </app-scene>
   }
 </main>

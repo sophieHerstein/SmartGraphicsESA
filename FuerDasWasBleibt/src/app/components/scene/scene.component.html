@@ -1,15 +1,28 @@
 <section class="story-scene" #scene>
   <img [src]="imageSrc" [class.visible]="imageInView" class="story-image" />
-  <div class="text-card" [class.visible]="textInView">
-    <span [innerHTML]="formatText(text)"></span>
-  </div>
+  @if (textHidden) {
+    <div class="reveal-text-button" (click)="toggleText()">📜</div>
+  }
+  @if (!textHidden) {
+    <div class="text-card" [ngClass]="{
+    'visible': textInView && !onlyImages,
+    'hidden': onlyImages
+  }">
+      <div class="toggle-text-button" (click)="toggleText()">✕</div>
+      <span [innerHTML]="formatText(text)"></span>
+    </div>
+  }
   <div class="button-container">
-    <button *ngIf="prevSceneId" (click)="scrollToPrevScene()" class="prev-scene-button">
-      ↑ Zurück
-    </button>
-    <button *ngIf="nextSceneId" (click)="scrollToNextScene()" class="next-scene-button">
-      ↓ Weiter
-    </button>
+    @if (prevSceneId){
+      <button (click)="scrollToPrevScene()" class="prev-scene-button">
+        ↑ Zurück
+      </button>
+    }
+    @if (nextSceneId){
+      <button (click)="scrollToNextScene()" class="next-scene-button">
+        ↓ Weiter
+      </button>
+    }
   </div>
 
 </section>

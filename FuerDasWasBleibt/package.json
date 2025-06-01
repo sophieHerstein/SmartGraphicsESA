@@ -6,11 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "install-all": "yarn install"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^19.2.6",
+    "@angular/animations": "n^19.2.6",
     "@angular/common": "^19.2.6",
     "@angular/compiler": "^19.2.6",
     "@angular/core": "^19.2.6",

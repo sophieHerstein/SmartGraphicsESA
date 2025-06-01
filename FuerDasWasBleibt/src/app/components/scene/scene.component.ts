@@ -1,4 +1,14 @@
-import { Component, Input, OnInit, ElementRef, ViewChild, HostListener, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  HostListener,
+  ViewEncapsulation,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -9,15 +19,20 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   standalone: false,
 })
 export class SceneComponent implements OnInit {
+  @Output() setCurrentScene: EventEmitter<number> = new EventEmitter();
+
+  @Input({required: true}) sceneId?: number;
   @Input() imageSrc!: string;
   @Input() heading!: string;
   @Input() text!: string;
-  @Input() nextSceneId?: string;
-  @Input() prevSceneId?: string;
+  @Input() nextSceneId?: number;
+  @Input() prevSceneId?: number;
+  @Input() onlyImages?: boolean;
 
   @ViewChild('scene', { static: true }) sceneRef!: ElementRef;
   imageInView = false;
   textInView = false;
+  textHidden = false;
 
 
   constructor(private sanitizer: DomSanitizer) {}
@@ -35,6 +50,7 @@ export class SceneComponent implements OnInit {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
+            this.setCurrentScene.emit(this.sceneId);
             this.imageInView = true;
             setTimeout(() => {
               this.textInView = true;
@@ -52,7 +68,7 @@ export class SceneComponent implements OnInit {
 
   scrollToNextScene() {
     if (this.nextSceneId) {
-      const nextElement = document.getElementById(this.nextSceneId);
+      const nextElement = document.getElementById(String(this.nextSceneId));
       if (nextElement) {
         nextElement.scrollIntoView({ behavior: 'smooth' });
       }
@@ -61,10 +77,15 @@ export class SceneComponent implements OnInit {
 
   scrollToPrevScene() {
     if (this.prevSceneId) {
-      const prevElement = document.getElementById(this.prevSceneId);
+      console.log(this.prevSceneId)
+      const prevElement = document.getElementById(String(this.prevSceneId));
       if (prevElement) {
         prevElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  }
+
+  toggleText() {
+    this.textHidden = !this.textHidden;
   }
 }
