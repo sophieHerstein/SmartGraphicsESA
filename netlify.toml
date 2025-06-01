@@ -6,8 +6,3 @@ publish = "dist/fuer-das-was-bleibt"
 from = "/*"
 to = "/index.html"
 status = 200
-
-# Diese Zeile deaktiviert das Angular Plugin
-[[plugins]]
-package = "@netlify/angular-runtime"
-enabled = false
