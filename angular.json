@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/fuer-das-was-bleibt"
+              "base": "dist/fuer-das-was-bleibt",
             },
             "index": "src/index.html",
             "polyfills": [
@@ -95,7 +95,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "./"
           }
         }
       }
