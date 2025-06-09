@@ -4,7 +4,7 @@ import {
   OnInit,
   ElementRef,
   ViewChild,
-  HostListener,
+  AfterViewInit,
   ViewEncapsulation,
   Output,
   EventEmitter
@@ -18,15 +18,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   encapsulation: ViewEncapsulation.None,
   standalone: false,
 })
-export class SceneComponent implements OnInit {
+export class SceneComponent implements OnInit, AfterViewInit {
   @Output() setCurrentScene: EventEmitter<number> = new EventEmitter();
 
   @Input({required: true}) sceneId?: number;
   @Input() imageSrc!: string;
   @Input() heading!: string;
   @Input() text!: string;
-  @Input() nextSceneId?: number;
-  @Input() prevSceneId?: number;
   @Input() onlyImages?: boolean;
 
   @ViewChild('scene', { static: true }) sceneRef!: ElementRef;
@@ -66,23 +64,10 @@ export class SceneComponent implements OnInit {
     observer.observe(this.sceneRef.nativeElement);
   }
 
-  scrollToNextScene() {
-    if (this.nextSceneId) {
-      const nextElement = document.getElementById(String(this.nextSceneId));
-      if (nextElement) {
-        nextElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }
-
-  scrollToPrevScene() {
-    if (this.prevSceneId) {
-      console.log(this.prevSceneId)
-      const prevElement = document.getElementById(String(this.prevSceneId));
-      if (prevElement) {
-        prevElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.sceneRef.nativeElement.classList.add('render-complete');
+    }, 50);
   }
 
   toggleText() {

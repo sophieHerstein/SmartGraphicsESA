@@ -12,17 +12,4 @@
       <span [innerHTML]="formatText(text)"></span>
     </div>
   }
-  <div class="button-container">
-    @if (prevSceneId){
-      <button (click)="scrollToPrevScene()" class="prev-scene-button">
-        ↑ Zurück
-      </button>
-    }
-    @if (nextSceneId){
-      <button (click)="scrollToNextScene()" class="next-scene-button">
-        ↓ Weiter
-      </button>
-    }
-  </div>
-
 </section>

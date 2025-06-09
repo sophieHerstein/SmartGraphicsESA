@@ -5,6 +5,7 @@ app-scene {
     height: 100vh;
     overflow: hidden;
     scroll-snap-align: start;
+    transform: translateZ(0);
   }
 
   .story-image {
@@ -121,7 +122,6 @@ app-scene {
   .next-scene-button,
   .prev-scene-button {
     position: absolute;
-    bottom: 2rem;
     background: rgba(255, 255, 255, 0.15);
     color: white;
     border: none;
@@ -131,7 +131,7 @@ app-scene {
     cursor: pointer;
     backdrop-filter: blur(4px);
     transition: background 0.3s ease;
-    z-index: 3;
+    z-index: 100;
 
     &:hover {
       background: rgba(255, 255, 255, 0.25);
@@ -149,5 +149,20 @@ app-scene {
   .button-container {
     display: flex;
     justify-content: space-between;
+  }
+
+  .story-scene {
+    &.render-complete {
+      .next-scene-button,
+      .prev-scene-button {
+        bottom: 5rem;
+      }
+    }
+
+    .next-scene-button,
+    .prev-scene-button {
+      bottom: -100px; // initial offscreen
+      transition: bottom 0.4s ease;
+    }
   }
 }

@@ -2,11 +2,11 @@
   "name": "fuer-das-was-bleibt",
   "version": "0.0.0",
   "scripts": {
-    "ng": "FuerDasWasBleibt/node_modules/.bin/ng",
-    "start": "FuerDasWasBleibt/node_modules/.bin/ng serve",
-    "build": "FuerDasWasBleibt/node_modules/.bin/ng build",
-    "watch": "FuerDasWasBleibt/node_modules/.bin/ng build --watch --configuration development",
-    "test": "FuerDasWasBleibt/node_modules/.bin/ng test",
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
     "install-all": "yarn install"
   },
   "private": true,

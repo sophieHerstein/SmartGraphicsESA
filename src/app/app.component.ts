@@ -27,19 +27,6 @@ export class AppComponent {
 
   currentSceneTitle = this.scenes[0].heading;
 
-  getNextSceneId(index: number){
-    if(index < this.scenes.length){
-      return index+2;
-    }
-    return undefined;
-  }
-
-  getPrevSceneId(index: number){
-    if(index > 0){
-      return index;
-    }
-    return undefined;
-  }
 
   triggerOnlyImages(){
     this.onlyImages = !this.onlyImages;
@@ -47,7 +34,6 @@ export class AppComponent {
 
   setSceneTitleAndScrollProgress(sceneId: number){
     this.currentSceneTitle = this.scenes.find((s)=> s.id === sceneId)?.heading ?? "";
-    console.log(this.scrollProgress);
     this.scrollProgress = sceneId/10 * 100;
   }
 
