@@ -1,27 +1,30 @@
-# FuerDasWasBleibt
+# Für das, was bleibt
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+Ein kreatives Frontend-Projekt mit Angular, das Storytelling und Generative AI visuell verbindet.
 
-## Development server
+## Kurzbeschreibung
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Dieses Projekt entstand im Rahmen meines Masterstudiums (Kurs *Smart Graphics*).  
+Die Idee: Eine selbst geschriebene Kurzgeschichte als interaktives Web-Erlebnis umsetzen und mit KI-generierten Bildern visuell unterstützen.
 
-## Code scaffolding
+Der Fokus liegt dabei klar auf der **Frontend-Entwicklung** – insbesondere darauf, Inhalte strukturiert, konsistent und atmosphärisch im Browser darzustellen.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features / Fokus
 
-## Build
+- Umsetzung einer modularen Angular-Anwendung
+- Visuelle Darstellung einer narrativen Geschichte
+- Konsistentes Design für Charaktere und Szenen
+- Kombination aus Text, Bild und UI für ein stimmiges Nutzererlebnis
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Tech-Stack
 
-## Running unit tests
+- Angular 19
+- TypeScript
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Kontext
 
-## Running end-to-end tests
+Der Schwerpunkt liegt bewusst auf der **Frontend-Umsetzung**, nicht auf der technischen Seite der Bildgenerierung.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Veröffentlicht für Portfolio- und Bewerbungszwecke.
