@@ -9,7 +9,6 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-scene',
@@ -32,15 +31,11 @@ export class SceneComponent implements OnInit, AfterViewInit {
   textInView = false;
   textHidden = false;
 
-
-  constructor(private sanitizer: DomSanitizer) {}
-
-  formatText(text: string): SafeHtml {
-    const html = text
+  formatText(text: string): string {
+    return text
       .split('\n\n')
       .map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`)
       .join('');
-    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   ngOnInit() {
